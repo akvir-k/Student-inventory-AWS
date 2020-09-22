@@ -28,7 +28,7 @@ module.exports=(login,knex,jwt)=>{
             knex.select('*').from('admin').where('email',req.body.email)
             .then((result)=>{
                 if(result[0].password==req.body.password){ 
-                    let token= jwt.sign({'email':result[0].email},process.env.adminsecrate)
+                    let token= jwt.sign({'email':result[0].email},process.env.adminsecrate,{expiresIn:"1h"})
                     res.send({token:token,key:process.env.adminsecrate})
                 }
                 else{

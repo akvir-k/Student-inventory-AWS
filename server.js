@@ -8,6 +8,8 @@ const path= require('path')
 const jwt= require('jsonwebtoken');
 const env= require('dotenv').config()
 
+const port= process.env.port || 4000
+
 const knex= require('./connection/knex_connection');
 
 app.use(cors());
@@ -33,7 +35,10 @@ require('./router/AddBed')(Addbed,jwt,knex)
 app.use('/',shuffule=express.Router())
 require('./router/suffule')(shuffule,jwt,knex)
 
+app.use('/',update=express.Router())
+require('./router/update')(update,jwt,knex)
 
-app.listen(4000,(req,res)=>{
+
+app.listen(port,(req,res)=>{
     console.log('server start.....')
 })

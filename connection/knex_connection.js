@@ -1,10 +1,10 @@
 const option={
     client:'mysql',
     connection:{
-        host:'localhost',
-        user:'root',
-        password:'aman1234',
-        database:'students_inventory'
+        host:process.env.host,
+        user:process.env.user,
+        password:process.env.password,
+        database:process.env.database
     }
 }
 

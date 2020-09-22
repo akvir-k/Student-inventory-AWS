@@ -49,7 +49,8 @@ module.exports = (bed, jwt, knex) => {
                 if (!err) {
                     knex('NavgurukulBed').where('bed', req.body.bed).del()
                         .then(result => {
-                            console.log(result)
+                            // console.log(result)
+                            res.send(JSON.stringify(result))
                         })
                         .catch(err => {
                             console.log(err)
